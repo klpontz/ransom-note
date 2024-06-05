@@ -13,6 +13,3 @@ while True :
         break
     except:
         print('File', second_fhandle, 'cannot be opened. Try again.')
-
-print(open_first_file)
-print(open_second_file)
