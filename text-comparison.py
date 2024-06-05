@@ -1,46 +1,47 @@
 # Prompt user for the first file name and handle errors
 while True :
-    first_fhandle = input('Enter a file name: ')
+    first_fhandle = input('Enter the file name of the ransom note: ')
     if len(first_fhandle) < 1 : first_fhandle = "ransom.txt"
     try:
-        open_first_file = open(first_fhandle)
+        open_ransom_note = open(first_fhandle)
         break
     except:
         print('File', first_fhandle, 'cannot be opened. Try again.')
 
 # Prompt user for the second file name and handle errors
 while True :
-    second_fhandle = input('Enter another file name: ')
+    second_fhandle = input('Enter the file name for the magazine: ')
     if len(second_fhandle) < 1 : second_fhandle = "magazine.txt"
     try:
-        open_second_file = open(second_fhandle)
+        open_magazine = open(second_fhandle)
         break
     except:
         print('File', second_fhandle, 'cannot be opened. Try again.')
 
 # Initialize dictionaries to store character counts
-first_hash = dict ()
-second_hash = dict ()
+ransom_note_hash = dict ()
+magazine_hash = dict ()
 
-# Read through the first file and count characters
-for lines in open_first_file :
+# Read through the ransom note file and count characters
+for lines in open_ransom_note :
     lines = lines.strip()
     if len(lines) < 1 : 
         continue
     for letter in lines :
         if letter.isalpha() :
             letter = letter.lower()    
-            first_hash[letter] = first_hash.get(letter, 0) + 1
+            ransom_note_hash[letter] = ransom_note_hash.get(letter, 0) + 1
 
-# Read through the first file and count characters
-for lines in open_second_file :
+# Read through the magazine file and count characters
+for lines in open_magazine :
     lines = lines.strip()
     if len(lines) < 1 : 
         continue
     for letter in lines :
         if letter.isalpha() :
             letter = letter.lower()
-            second_hash[letter] = second_hash.get(letter, 0) + 1
+            magazine_hash[letter] = magazine_hash.get(letter, 0) + 1
 
-print('First file: ', first_hash)
-print('Second file: ', second_hash)
+# print('First file: ', ransom_note_hash)
+# print('Second file: ', magazine_hash)
+
