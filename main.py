@@ -45,7 +45,6 @@ for lines in open_magazine :
 
 # Compare values in rasome note to values in magazine
 for key in ransom_note_hash :
-    # print("Character: ", key, "Ransom note: ", ransom_note_hash[key], "Magazine :", magazine_hash[key])
     if key in magazine_hash and ransom_note_hash[key] > magazine_hash[key] :
         print("False: the ransom note was not created with this magazine.\n", key, "appears in the ransom note", ransom_note_hash[key], "times, and only appears in the magazine", magazine_hash[key], "times.")
         break
