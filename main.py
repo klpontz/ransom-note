@@ -23,29 +23,32 @@ while True :
 ransom_note_hash = dict ()
 magazine_hash = dict ()
 
-# Read through the ransom note file and count characters
-for lines in open_ransom_note :
-    lines = lines.strip()
-    for letter in lines :
-        if letter.isalpha() :
-            letter = letter.lower()    
-            ransom_note_hash[letter] = ransom_note_hash.get(letter, 0) + 1
+# Function to read through file and count letter
+def read_file_count_letters(filename) :
+    letter_count = dict ()
+    for lines in filename :
+        lines = lines.strip()
+        for letter in lines :
+            if letter.isalpha() :
+                letter = letter.lower()
+                letter_count[letter] = letter_count.get(letter, 0) + 1
+    return letter_count
 
-# Read through the magazine file and count characters
-for lines in open_magazine :
-    lines = lines.strip()
-    for letter in lines :
-        if letter.isalpha() :
-            letter = letter.lower()
-            magazine_hash[letter] = magazine_hash.get(letter, 0) + 1
-
-# Determine if the ransom note can be constructed from the magazine letters
+# Function to determine if the ransom note can be constructed from the magazine letters
 def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
     for letter, count in ransom_note_hash.items () :
         if letter in magazine_hash and ransom_note_hash[letter] > magazine_hash[letter]:
             return False, letter, ransom_note_hash[letter], magazine_hash[letter]
     return True, None, None, None
 
+# Initialize function to count characters in files and map to dictionaries
+letter_count = read_file_count_letters(open_ransom_note)
+ransom_note_hash.update(letter_count)
+
+letter_count = read_file_count_letters(open_magazine)
+magazine_hash.update(letter_count)
+
+# Initialize function to compare character counts in files
 can_construct, missing_letter, ransom_count, magazine_count = can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash)
 
 # Print results of comparison of ransom note and magazine
