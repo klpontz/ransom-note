@@ -1,23 +1,4 @@
-# Prompt user for the first file name and handle errors
-
 print("\nWelcome. Let's determine if the ransom note was created with a specific magazine.\n")
-
-while True :
-    first_fhandle = input('Enter the file name of the ransom note: ')
-    try:
-        open_ransom_note = open(first_fhandle)
-        break
-    except:
-        print('File', first_fhandle, 'cannot be opened. Try again.')
-
-# Prompt user for the second file name and handle errors
-while True :
-    second_fhandle = input('Enter the file name for the magazine: ')
-    try:
-        open_magazine = open(second_fhandle)
-        break
-    except:
-        print('File', second_fhandle, 'cannot be opened. Try again.')
 
 # Initialize dictionaries to store character counts
 ransom_note_hash = dict ()
@@ -40,6 +21,25 @@ def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
         if letter in magazine_hash and ransom_note_hash[letter] > magazine_hash[letter]:
             return False, letter, ransom_note_hash[letter], magazine_hash[letter]
     return True, None, None, None
+
+# Prompt user for the first file name and handle errors
+
+while True :
+    first_fhandle = input('Enter the file name of the ransom note: ')
+    try:
+        open_ransom_note = open(first_fhandle)
+        break
+    except:
+        print('File', first_fhandle, 'cannot be opened. Try again.')
+
+# Prompt user for the second file name and handle errors
+while True :
+    second_fhandle = input('Enter the file name for the magazine: ')
+    try:
+        open_magazine = open(second_fhandle)
+        break
+    except:
+        print('File', second_fhandle, 'cannot be opened. Try again.')
 
 # Initialize function to count characters in files and map to dictionaries
 letter_count = read_file_count_letters(open_ransom_note)
