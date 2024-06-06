@@ -1,6 +1,6 @@
 # Prompt user for the first file name and handle errors
 
-print("\nWelcome. Let's determine if the ransom note was created with this magazine.\n")
+print("\nWelcome. Let's determine if the ransom note was created with a specific magazine.\n")
 
 while True :
     first_fhandle = input('Enter the file name of the ransom note: ')
@@ -39,6 +39,7 @@ for lines in open_magazine :
             letter = letter.lower()
             magazine_hash[letter] = magazine_hash.get(letter, 0) + 1
 
+# Determine if the ransom note can be constructed from the magazine letters
 def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
     for letter, count in ransom_note_hash.items () :
         if letter in magazine_hash and ransom_note_hash[letter] > magazine_hash[letter]:
@@ -47,6 +48,7 @@ def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
 
 can_construct, missing_letter, ransom_count, magazine_count = can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash)
 
+# Print results of comparison of ransom note and magazine
 if can_construct == True :
     print('TRUE: the ransom note may have been created with this magazine.')
 else :
