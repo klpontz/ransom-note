@@ -1,8 +1,35 @@
-print("\nWelcome. Let's determine if the ransom note was created with a specific magazine.\n")
+import argparse
 
-# Initialize dictionaries to store character counts
-ransom_note_hash = dict ()
-magazine_hash = dict ()
+# Create parser to handle string input from terminal
+def read_files () :
+    parser = argparse.ArgumentParser(description='Read a string from a terminal or prompt user for a text file.')
+    parser.add_argument('--ransom', type=str, help='Input string for the ransom note')
+    parser.add_argument('--magazine', type=str, help='Input string for the magazine')
+
+    args = parser.parse_args()
+
+    if args.ransom and args.magazine :
+        open_ransom_note = args.ransom
+        open_magazine = args.magazine
+    
+    else :
+        while True :
+            first_fhandle = input('Enter the file name of the ransom note: ')
+            try:
+                open_ransom_note = open(first_fhandle)            
+                break
+            except:
+                print('File', first_fhandle, 'cannot be opened. Try again.')
+
+        while True :
+            second_fhandle = input('Enter the file name for the magazine: ')
+            try:
+                open_magazine = open(second_fhandle)
+                break
+            except:
+                print('File', second_fhandle, 'cannot be opened. Try again.')
+
+    return open_ransom_note, open_magazine
 
 # Function to read through file and count letter
 def read_file_count_letters(filename) :
@@ -22,23 +49,14 @@ def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
             return False, letter, ransom_note_hash[letter], magazine_hash[letter]
     return True, None, None, None
 
-# Prompt user for the first file name and handle errors
-while True :
-    first_fhandle = input('Enter the file name of the ransom note: ')
-    try:
-        open_ransom_note = open(first_fhandle)
-        break
-    except:
-        print('File', first_fhandle, 'cannot be opened. Try again.')
+# Initialize dictionaries to store character counts
+ransom_note_hash = dict ()
+magazine_hash = dict ()
 
-# Prompt user for the second file name and handle errors
-while True :
-    second_fhandle = input('Enter the file name for the magazine: ')
-    try:
-        open_magazine = open(second_fhandle)
-        break
-    except:
-        print('File', second_fhandle, 'cannot be opened. Try again.')
+# Prompt user for the first file name and handle errors
+print("\nWelcome. Let's determine if the ransom note was created with a specific magazine.\n")
+
+open_ransom_note, open_magazine = read_files()
 
 # Initialize function to count characters in files and map to dictionaries
 letter_count = read_file_count_letters(open_ransom_note)
