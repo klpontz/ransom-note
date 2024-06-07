@@ -44,9 +44,10 @@ def read_file_count_letters(filename) :
 
 # Function to determine if the ransom note can be constructed from the magazine letters
 def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
-    for letter, count in ransom_note_hash.items () :
-        if letter in magazine_hash and ransom_note_hash[letter] > magazine_hash[letter]:
-            return False, letter, ransom_note_hash[letter], magazine_hash[letter]
+    for ransom_letter, ransom_count in ransom_note_hash.items () :
+        for magazine_letter, magazine_count in magazine_hash.items () :
+            if ransom_letter not in magazine_hash or ransom_count > magazine_count :
+                return False, magazine_letter, ransom_count, magazine_count
     return True, None, None, None
 
 # Initialize dictionaries to store character counts
