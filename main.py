@@ -23,7 +23,6 @@ def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
     return True, None, None, None
 
 # Prompt user for the first file name and handle errors
-
 while True :
     first_fhandle = input('Enter the file name of the ransom note: ')
     try:
