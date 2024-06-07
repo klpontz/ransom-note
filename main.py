@@ -52,10 +52,9 @@ def read_file_count_letters(filename) :
 
 # Determine if the ransom note can be constructed from the magazine letters
 def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
-    for ransom_letter, ransom_count in ransom_note_hash.items () :
-        for magazine_letter, magazine_count in magazine_hash.items () :
-            if ransom_letter not in magazine_hash or ransom_count > magazine_count :
-                return False, magazine_letter, ransom_count, magazine_count
+    for ransom_letter, ransom_count in ransom_note_hash.items():
+        if ransom_letter not in magazine_hash or ransom_count > magazine_hash.get(ransom_letter, 0):
+            return False, ransom_letter, ransom_count, magazine_hash.get(ransom_letter, 0)
     return True, None, None, None
 
 # Initialize dictionaries to store character counts
@@ -81,8 +80,8 @@ if __name__ == "__main__":
 
     # Print results of comparison of ransom note and magazine
     if can_construct == True :
-        print('TRUE: the ransom note may have been created with this magazine.')
+        print('TRUE: the ransom note may have been created with this magazine.\n')
     else :
-        print("FALSE: the ransom note was not created with this magazine.\n", 
-          missing_letter, "appears in the ransom note", ransom_count, 
-          "times, and only appears in the magazine", magazine_count, "times.")
+        print(f"FALSE: the ransom note was not created with this magazine.\n\n" 
+          f"'{missing_letter}' appears in the ransom note {ransom_count} " 
+          f"times, and only appears in the magazine {magazine_count} times.\n")
