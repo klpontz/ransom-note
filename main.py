@@ -81,6 +81,14 @@ if __name__ == "__main__":
     # Print results of comparison of ransom note and magazine
     if can_construct == True :
         print('TRUE: the ransom note may have been created with this magazine.\n')
+    elif can_construct == False and ransom_count == 1 :
+        print(f"FALSE: the ransom note was not created with this magazine.\n\n" 
+          f"'{missing_letter}' appears in the ransom note {ransom_count} " 
+          f"time, and only appears in the magazine {magazine_count} times.\n")
+    elif can_construct == False and magazine_count == 1 :
+        print(f"FALSE: the ransom note was not created with this magazine.\n\n" 
+          f"'{missing_letter}' appears in the ransom note {ransom_count} " 
+          f"times, and only appears in the magazine {magazine_count} time.\n")
     else :
         print(f"FALSE: the ransom note was not created with this magazine.\n\n" 
           f"'{missing_letter}' appears in the ransom note {ransom_count} " 
