@@ -1,8 +1,8 @@
-# LETTER FREQUENCY COMPARISON
+# Letter Frequency Comparison
 
 **Scenario**: You have a ransom note. It was made from the clippings of a magazine. You need to determine if the ransom note was made with a specific magazine. 
 
-The solution should return an answer to the question: could the ransom note have been created from this magazine?
+This program will handle this scenario by counting the frequency of letters in the ransom note and compare the frequency of letters in the magazine. If there are more of one letter in the ransom note than in the magazine, the ransom note could not have been created by the magazine. But if the magazine contains more letters than the ransom note, the ransom note could have been created with the magazine. 
 
 ## To Run Program
 
@@ -23,3 +23,7 @@ FALSE: the ransom note was not created with this magazine.
 
 'g' appears in the ransom note 1 times, and only appears in the magazine 0 times.
 ```
+
+## Make it More Real
+
+To take this scenario seriously, we would not read in a text file. A ransom note is unique not just because of the letters. There's more to account for: font style, font size, font family, and more. For a real world scenario, we should create a program that reads in the images of the ransom note and the magazine. The program would need to create a shape around the letters matching the shapes in the ransome note and record the pixel values in a matrix. Now we can compare the collection created from the ransom note against the collection created from the magazine. This would give us the best chance of knowing if a ransom note was created from a specific magazine.
