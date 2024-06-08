@@ -26,6 +26,8 @@ Count in Ransom Note: 1
 Count in Magazine: 0
 ```
 
+Note that this will not report all the mismatches between the ransom note and magazine. As soon as the program finds a mismatch, it quits and reports the discrepancy that it found.
+
 ## Make it More Real
 
 To take this scenario seriously, we would not read in a text file. A ransom note is unique not just because of the letters. There's more to account for: font style, font size, font family, and more. For a real world scenario, we should create a program that reads in the images of the ransom note and the magazine. The program would need to create a shape around the letters matching the shapes in the ransome note and record the pixel values in a matrix. Now we can compare the collection created from the ransom note against the collection created from the magazine. This would give us the best chance of knowing if a ransom note was created from a specific magazine.
