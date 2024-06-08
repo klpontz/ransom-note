@@ -21,7 +21,9 @@ The previous command returns the following results:
 ```
 FALSE: the ransom note was not created with this magazine.
 
-'v' appears in the ransom note 1 times, and only appears in the magazine 0 times.
+A Mismatching Letter: 'v'
+Count in Ransom Note: 1
+Count in Magazine: 0
 ```
 
 ## Make it More Real
