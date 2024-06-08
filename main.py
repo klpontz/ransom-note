@@ -53,7 +53,7 @@ def read_file_count_letters(filename) :
 # Determine if the ransom note can be constructed from the magazine letters
 def can_construct_ransom_note_from_magazine(ransom_note_hash, magazine_hash) :
     for ransom_letter, ransom_count in ransom_note_hash.items():
-        if ransom_letter not in magazine_hash or ransom_count > magazine_hash.get(ransom_letter, 0):
+        if ransom_count > magazine_hash.get(ransom_letter, 0):
             return False, ransom_letter, ransom_count, magazine_hash.get(ransom_letter, 0)
     return True, None, None, None
 
