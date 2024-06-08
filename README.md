@@ -21,7 +21,7 @@ The previous command returns the following results:
 ```
 FALSE: the ransom note was not created with this magazine.
 
-'g' appears in the ransom note 1 times, and only appears in the magazine 0 times.
+'v' appears in the ransom note 1 times, and only appears in the magazine 0 times.
 ```
 
 ## Make it More Real
