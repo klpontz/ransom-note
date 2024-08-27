@@ -1,7 +1,3 @@
-Certainly! Here's an improved version of the README file for your program:
-
----
-
 # Letter Frequency Comparison
 
 ## Scenario
